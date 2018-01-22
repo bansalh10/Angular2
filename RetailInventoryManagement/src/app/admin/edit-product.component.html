@@ -1,0 +1,42 @@
+
+
+<div class="container" *ngIf='product'>
+     <h3>Edit product</h3>
+    <form #productForm="ngForm" (ngSubmit)="update();">
+        <div class="form-group">
+                <label>Name</label>
+                     <input type="text" [(ngModel)]='product.name' class="form-control" name="formname" required #formname="ngModel"/>
+                     <span *ngIf="formname.touched && formname.errors && formname.errors.required">Required!!</span>
+        </div>
+
+         <div class="form-group">
+             <label>Type</label>
+                 <input type="text" [(ngModel)]='product.type' class="form-control" name="formtype" required #formtype="ngModel" />
+                 <span *ngIf="formtype.touched && formtype.errors && formtype.errors.required">Required!!</span>
+         </div>
+
+         <div class="form-group">
+             <label>Cost</label>
+            
+                <input type="number" [(ngModel)]='product.cost' class="form-control" name="formcost" required #formcost="ngModel"/>
+                  <span *ngIf="formcost.touched && formcost.errors && formcost.errors.required">Required!!</span>
+         </div>
+
+         <div class="form-group">
+                <label>Discount</label>
+        
+                    <input type="text" [(ngModel)]='product.discount' minlength="0" maxlength="3" class="form-control" name="formdiscount" required #formdiscount="ngModel" />
+                    <span *ngIf="formdiscount.touched && formdiscount.errors && formdiscount.errors.required">Required!!</span>
+                    <span *ngIf="formdiscount.touched && formdiscount.errors && (formdiscount.errors.maxlength || formdiscount.errors.minlength  )">Discount should be between 0 and 100</span>
+                
+         </div>
+
+          <div class="checkbox">
+              <label> <input type="checkbox" name="offer" [(ngModel)]='product.offer' [ngModelOptions]="{standalone: true}" > Include In Offers</label>
+              
+          </div>
+
+        <button type="submit" class="btn btn-info" [disabled]="!productForm.form.valid">Update </button>
+        <button (click)=delete(product.id) class="btn btn-default" >Delete</button>
+    </form>
+</div>

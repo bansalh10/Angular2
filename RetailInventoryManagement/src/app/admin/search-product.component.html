@@ -1,0 +1,23 @@
+
+<div class='table-responsive'>
+		<table class='table' *ngIf='products && products.length'>
+			<thead>
+				<tr>
+					
+					<th>Product Name</th>
+					<th>Product Cost</th>
+					<th>Discount %</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let product of products'>
+					<td>{{product.name}}</td>
+					<td>{{product.cost}}</td>
+					<td>{{product.discount}}</td>
+					<td>
+					<button class="btn btn-info" (click)="edit(product.id)" >Edit</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

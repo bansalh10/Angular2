@@ -1,0 +1,54 @@
+<div class="container">
+<form class="form-group" #addUserForm="ngForm" (ngSubmit)="SaveCustomer(); addUserForm.reset()" >
+  <div class="form-group">
+    <label for="txtFirstName">Name</label>
+    <input type="text" class="form-control" id="txtFirstName" [(ngModel)]='name' name='cname' placeholder="Name" required/>
+  </div>
+  <div class="form-group">
+    <label for="txtAge">Age</label>
+    <input type="text " class="form-control" [(ngModel)]='age' name='cage' id="txtAge" maxlength="3" required/>
+  </div>
+<div class="form-group">
+    <label for="txtdesc">Description</label>
+    <textarea  class="form-control" [(ngModel)]='desc' name='cdesc' id="txtdesc" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="txtMobileNumber">MobileNumber</label>
+    <input type="text" class="form-control" [(ngModel)]='mobnum' name='cmobnum' id="txtMobileNumber" maxlength="10" required/>
+  </div>
+  <div class="form-group">
+    <label for="customerType">Type:</label>
+    <input type="radio" class="radio-inline" id="customerType" [(ngModel)]='radio'  name="optradio" value="Regular" #radio1 (click)="hideemployee(radio1.value)"/>Regular
+    <input type="radio" id="customerType" class="radio-inline"  [(ngModel)]='radio' name="optradio" value="Corporate" #radio2 (click)="hideemployee(radio2.value)"/>Corporate
+  </div>
+  <div class="form-group">
+    <label for="txtLoyal" >Loyal Program Subscribed:</label>
+    <input type="checkbox" id="txtLoyal" [(ngModel)]='LoyalC' name="cloyal" />
+  </div>
+ <div class="form-group">
+    <label for="txtPickup">PickUp Date:</label>
+    <input type="Date" class="form-control" id="txtPickup" [(ngModel)]='Date' name='cDate'required />
+  </div>
+  <div class="form-group">
+    <label for="txtCharges">Charges</label>
+    <input type="text"  id="txtCharges" class="form-control"   [(ngModel)]='Charges' name='cCharges' required />
+    <label>per/km</label>
+  </div>
+  <div class="form-group" >
+    <label for="txtNum">Number of Employees</label>
+    <input type="text" *ngIf="flag" class="form-control" id="txtNum" [(ngModel)]='NumEmp' name='cNumDate'/>
+  </div>
+  <div class="form-group">
+    <label for="txtDist">Distance Travelled</label>
+    <input type="text" class="form-control" id="txtDist" [(ngModel)]='Dist' name='cDist' required/>
+  </div>
+  
+  <div class="form-input">
+      <button type="submit" [disabled]="!addUserForm.form.valid">
+        Submit
+      </button>
+    </div>
+</form>
+
+</div>
+<router-outlet></router-outlet>

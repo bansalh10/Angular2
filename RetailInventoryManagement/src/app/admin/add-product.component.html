@@ -1,0 +1,38 @@
+<div class="container">
+     <h3>Add new product</h3>
+    <form #productForm="ngForm" (ngSubmit)="addProduct(); productForm.reset()">
+        <div class="form-group">
+                <label>Name</label>
+                     <input type="text" [(ngModel)]='product.name' class="form-control" name="formname" required #formname="ngModel"/>
+                     <span *ngIf="formname.touched && formname.errors && formname.errors.required">Required!!</span>
+        </div>
+
+         <div class="form-group">
+             <label>Type</label>
+                 <input type="text" [(ngModel)]='product.type' class="form-control" name="formtype" required #formtype="ngModel" />
+                 <span *ngIf="formtype.touched && formtype.errors && formtype.errors.required">Required!!</span>
+         </div>
+
+         <div class="form-group">
+             <label>Cost</label>
+            
+                <input type="number" [(ngModel)]='product.cost' class="form-control" name="formcost" required #formcost="ngModel"/>
+                  <span *ngIf="formcost.touched && formcost.errors && formcost.errors.required">Required!!</span>
+         </div>
+
+         <div class="form-group">
+                <label>Discount</label>
+        
+                    <input type="text" [(ngModel)]='product.discount'class="form-control" name="formdiscount" required #formdiscount="ngModel" />
+                    <span *ngIf="formdiscount.touched && formdiscount.errors && formdiscount.errors.required">Required!!</span>
+                
+         </div>
+
+          <div class="checkbox">
+              <label> <input type="checkbox" name="offer" [(ngModel)]='product.offer' [ngModelOptions]="{standalone: true}" > Include In Offers</label>
+              
+          </div>
+
+        <button type="submit" class="btn btn-info" [disabled]="!productForm.form.valid">submit </button>
+    </form>
+</div>

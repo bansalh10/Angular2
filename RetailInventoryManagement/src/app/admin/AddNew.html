@@ -1,0 +1,109 @@
+
+<form class="myform" #addUserForm="ngForm" (ngSubmit)=SaveCustomer()>
+  <button type="button" class="close myclose" [routerLink]="['/main']">&times;</button>
+  <h4>{{title}}</h4>
+  
+  <div class="form-group">
+    <label for="NameInput">Name</label>
+    <input required type="text" class="form-control" id="NameInput" 
+    placeholder="Name" [readonly]="disabled" 
+     [(ngModel)]='Name' name="Name" #NameInput="ngModel"/>
+     <div *ngIf="NameInput.errors && (NameInput.dirty||NameInput.touched)">
+       <div class="label label-warning" [hidden]="!NameInput.errors.required">Title is required</div>
+     </div>
+  </div>
+
+  
+  <div class="form-group">
+    <label for="AgeInput">Age</label>
+    <input type="text" class="form-control" maxlength="3" id="AgeInput" placeholder="Age" 
+    [readonly]="disabled" [(ngModel)]='Age' name="Age" #AgeInput="ngModel" required> 
+    <div *ngIf="AgeInput.errors && (AgeInput.dirty||NameInput.touched)">
+       <div class="label label-warning"  [hidden]="!AgeInput.errors.required">Age is required</div>
+       <div class="label label-warning"  [hidden]="!AgeInput.errors.maxlength">Age cannot be greater than 3 digits</div>
+     </div>
+  </div>
+
+  <div class="form-group">
+    <label for="DescriptionInput">Description</label>
+    <input type="text" class="form-control" id="DescriptionInput" 
+    placeholder="Description" [readonly]="disabled" 
+     [(ngModel)]='Description' name="Description" #DescriptionInput="ngModel">
+  </div>
+
+  <div class="form-group">
+    <label for="MobileNumberInput">Mobile Number</label>
+    <input type="text" class="form-control" maxlength="10" id="MobileNumberInput" 
+    placeholder="MobileNumber" required [readonly]="disabled" 
+    [(ngModel)]='MobileNumber' name="MobileNumber" #MobileNumberInput="ngModel">
+    <div *ngIf="MobileNumberInput.errors && (MobileNumberInput.dirty||MobileNumberInput.touched)">
+       <div class="label label-warning"  [hidden]="!MobileNumberInput.errors.required">Mobile Number is required</div>
+       <div class="label label-warning"  [hidden]="!MobileNumberInput.errors.maxlength">Cant be more than 10digits</div>
+     </div>
+  </div>
+  
+  <label>Type</label>
+  <br>
+  <div class="radio">
+    <label><input type="radio" id="CorporateInput" value="Corporate" name="Type" [readonly]="disabled"
+    [(ngModel)]='Type' #TypeInput="ngModel">Corporate</label>
+  </div>
+  <div class="radio">
+    <label><input type="radio" id="RegularInput" value="Regular" name="Type" [readonly]="disabled"
+    [(ngModel)]='Type'  #TypeInput="ngModel">Regular</label>
+     <div *ngIf="TypeInput.errors && (TypeInput.dirty||TypeInput.touched)">
+       <div class="label label-warning"  [hidden]="!TypeInput.errors.required">Type is required</div>
+       
+     </div>
+  </div>
+  
+<label>Loyal Program Subscribed
+  <div class="checkbox">
+    <label><input type="checkbox" id="LoyalProgramInput" name="LoyalProgram"  value="Loyal" [readonly]="disabled"
+    [(ngModel)]='LoyalProgram'  #LoyalProgramInput="ngModel"></label>
+   
+  </div>
+</label>
+  
+  <div class="form-group">
+    <label for="PickUpDateInput">Pick Up date</label>
+    <input type="text" class="form-control" id="PickUpDateInput" placeholder="YYYY-MM-DD" [readonly]="disabled"
+    required minlength="10" maxlength="10"
+    [(ngModel)]='PickUpDate' name="PickUpDate" #PickUpDateInput="ngModel">
+     <div *ngIf="PickUpDateInput.errors && (PickUpDateInput.dirty||PickUpDateInput.touched)">
+       <div class="label label-warning"  [hidden]="!PickUpDateInput.errors.required">Pick Up date is required</div>
+       <div class="label label-warning"  [hidden]="!PickUpDateInput.errors.maxlength">has to be in format YYYY-MM-DD</div>
+       <div class="label label-warning"  [hidden]="!PickUpDateInput.errors.minlength">has to be in format YYYY-MM-DD</div>
+     </div>
+  </div>
+
+  <div class="form-group">
+    <label for="ChargesInput">Charges</label>
+    <input type="text" class="form-control" id="ChargesInput" placeholder="per/km" [readonly]="disabled"
+    [(ngModel)]='Charges' name="Charges" #ChargesInput="ngModel" required>
+     <div *ngIf="ChargesInput.errors && (ChargesInput.dirty||ChargesInput.touched)">
+       <div class="label label-warning"  [hidden]="!ChargesInput.errors.required">Charges are required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="NumberOfEmployeesInput">Number Of Employees</label>
+    <input type="text" class="form-control" id="NumberOfEmployees" 
+    placeholder="Number Of Employees" [(ngModel)]='NumberOfEmployees' [disabled]="!IsCorporate||disabled"
+    name="NumberOfEmployees" #NumberOfEmployeesInput="ngModel">
+  </div>
+  
+  <div class="form-group">
+    <label for="DistanceInput">Distance Travelled</label>
+    <input type="text" class="form-control" id="DistanceInput" placeholder="km" [readonly]="disabled"
+    name="Distance" [(ngModel)]='Distance' #DistanceInput="ngModel">
+    <div *ngIf="DistanceInput.errors && (DistanceInput.dirty||DistanceInput.touched)">
+       <div class="label label-warning"   [hidden]="!DistanceInput.errors.required">Distance is required</div>
+    </div>
+  </div>
+  
+<div class="Buttons">
+  <input id="btnSubmit" class="btn btn-primary" type="submit" [disabled]="!addUserForm.form.valid||disabled" />
+  <input id="btnCancel" class="btn btn-primary" type="button" [disabled]="disabled" value="Cancel" (click)=Cancel() />
+</div>
+</form>

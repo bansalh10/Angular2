@@ -1,0 +1,74 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">Offers</div>
+  <div class="panel-body">
+
+<div class='table-responsive'>
+		<p *ngIf='offers==undefined || offers.length==0'>
+					No Offers
+				</p>
+		<table class='table' *ngIf='offers && offers.length'>
+			<thead>
+				<tr>
+					
+					<th>Product Name</th>
+					<th>Product Cost</th>
+					<th>Discount %</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				<tr *ngFor='let product of offers'>
+					<td>{{product.name}}</td>
+					<td>{{product.cost}}</td>
+					<td>{{product.discount}}</td>
+					<td *ngIf='product.cart==undefined || product.cart==0'>
+					<button class="btn btn-info" (click)="addToCart(product)" >AddToCart</button></td>
+					<td *ngIf='product.cart==1'>
+						<button class="btn btn-warning"  (click)="removeFromCart(product)" >RemoveFromCart</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading">Previous Searched Products</div>
+  <div class="panel-body">
+<div class='table-responsive'>
+		<p *ngIf='products==undefined || products.length==0'>
+					No previous searches
+				</p>
+		<table class='table' *ngIf='products && products.length'>
+			<thead>
+				<tr>
+					
+					<th>Product Name</th>
+					<th>Product Cost</th>
+					<th>Discount %</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let product of products'>
+					<td>{{product.name}}</td>
+					<td>{{product.cost}}</td>
+					<td>{{product.discount}}</td>
+					<td *ngIf='product.outofstock==false &&( product.cart==undefined || product.cart==0)'>
+					<button class="btn btn-info" (click)="addToCart(product)" >AddToCart</button></td>
+					<td *ngIf='product.cart==1'>
+						<button class="btn btn-warning" (click)="removeFromCart(product)" >RemoveFromCart</button>
+					</td>
+					<td *ngIf='product.outofstock'>
+						<p>OutofStock</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>

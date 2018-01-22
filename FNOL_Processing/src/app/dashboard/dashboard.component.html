@@ -1,0 +1,162 @@
+<div class="panel panel-primary">
+  <div class="panel-heading text-center"><h1>Dashboard</h1></div>
+</div>
+<form  #dateForm="ngForm" (ngSubmit)="search(date)" class="form-inline">
+        <div class="form-group">
+            <label>Enter Date</label>
+                    <input type="date" [(ngModel)]='date' required name="Date" #Date="ngModel">
+        </div>
+        <button type="submit" [disabled]="!dateForm.form.valid" class="btn btn-info"><span class="glyphicon glyphicon-search"></span>Search</button>
+    </form>
+
+    <table *ngIf='fnols' class="table table-bordered" style="width: 60%">
+        <thead>
+            <tr>
+            <th style="text-align: center">Frauds
+            </th>
+            <th style="text-align: center">Suspicious
+            </th>
+            <th style="text-align: center">Valid
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width: 33%;padding: 0px">
+                    <table class="table table-striped table-bordered table-selfmade" >
+                        <tbody>
+                             <tr class="tr-selfmade" *ngFor="let fnol of fraudFnol" (click)=setFnol(fnol)>
+                             <td class="td-selfmade"> {{fnol.fnolId}}</td>
+                             </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="width: 33%;padding: 0px">
+                    <table class="table table-striped table-bordered table-selfmade">
+                        <tbody>
+                             <tr class="tr-selfmade" *ngFor="let fnol of suspiciousFnol" (click)=setFnol(fnol)>
+                             <td class="td-selfmade"> {{fnol.fnolId}}</td>
+                             </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="width: 33%;padding: 0px">
+                    <table class="table table-striped table-bordered table-selfmade">
+                        <tbody>
+                             <tr class="tr-selfmade" *ngFor="let fnol of validFnol" (click)=setFnol(fnol)>
+                             <td class="td-selfmade"> {{fnol.fnolId}}</td>
+                             </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   <div *ngIf='targetFnol' class="panel panel-primary">
+  <div class="panel-heading" style="text-align: center"><h4>Update Fnol</h4></div>
+  <div class="panel-body">
+      <table class="table table-bordered">
+          <tbody>
+              <tr>
+                  <td><b>FnolId</b>
+                  </td>
+                  <td>{{targetFnol.fnolId}}
+                  </td>
+                  <td><b>Name</b>
+                  </td>
+                  <td>{{targetFnol.name}}
+                  </td>
+                  <td><b>Email</b>
+                  </td>
+                  <td>{{targetFnol.email}}
+                  </td>
+                 
+              </tr>
+              <tr>
+                  <td><b>Date</b>
+                  </td>
+                  <td>{{targetFnol.date}}
+                  </td>
+                  <td><b>Time</b>
+                  </td>
+                  <td>{{targetFnol.time}}
+                  </td>
+                  <td><b>SSN</b>
+                  </td>
+                  <td>{{targetFnol.ssn}}
+                  </td>
+                 
+              </tr>
+              <tr>
+                  <td><b>HappinessIndex</b>
+                  </td>
+                  <td>{{targetFnol.happinessIndex}}
+                  </td>
+                  <td><b>CreditScoreVariation</b>
+                  </td>
+                  <td>{{targetFnol.creditScoreVariation}}
+                  </td>
+                  <td><b>FraudChances</b>
+                  </td>
+                  <td>{{targetFnol.isFraud}}
+                  </td>
+                 
+              </tr>
+              
+              
+          
+          </tbody>
+      </table>
+      <table>
+          <tbody>
+              <tr>
+
+                    <td>   <button *ngIf='targetFnol.isFraud>=3' class="btn btn-success btn-s"  (click)=update(targetFnol,1)>SetValid</button></td>
+                    <td> <button  *ngIf='targetFnol.isFraud!=3' class="btn btn-warning btn-s"  (click)=update(targetFnol,3)>SetSuspicious</button></td>
+                   <td> <button  *ngIf='targetFnol.isFraud<=3' class="btn btn-danger btn-s"  (click)=update(targetFnol,5)>SetFraud</button></td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+   </div>
+   <div class="panel panel-primary">
+  <div class="panel-heading" style="text-align: center"><h4>RESPONSES</h4></div>
+	</div>
+	<table class="table table-striped table-bordered">
+	<thead>
+	<tr>
+	<th>RequestId</th>
+	<th>RequestDescription</th>
+	<th>Operation Name</th>
+	<th>Operation URI</th>
+	<th>HTTP Type</th>
+	<th>Input Media Type</th>
+	<th>Input Json</th>
+	<th>Output Media Type</th>
+	<th>Expected Schema</th>
+	<th>Authorization</th>
+    <th>Run</th>
+    <th>Validate Values</th>
+    <th>Expected Response/th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr >
+			<td><input type="text" value="123"></td>
+			<td><input type="text" value="Default Description"></td>
+			<td><input type="text" value="Default OperationName"></td>
+			<td><input type="text" value="Default OperationUri"></td>
+			<td><select>
+                  <option value="GET">GET</option>
+                  <option value="POST">POST</option>
+                  <option value="PUT">PUT</option> 
+                  <option value="DELETE">DELETE</option>
+                </select></td>
+			<td><span >DefaultError</span></td>
+			<td><span>DefaultActualResponse</span></td>
+			<td><span>DefaultValidateValues</span></td>
+			<td><span>DefaultExpectedResponse</span></td>
+			<td><span>DefaultWarning</span></td>
+		</tr>
+		</tbody>
+	</table>

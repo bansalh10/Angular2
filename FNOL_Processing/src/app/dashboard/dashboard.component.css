@@ -1,0 +1,21 @@
+
+
+.table-selfmade{
+    border: none;
+    margin: 0px;
+}
+.td-selfmade{
+    text-align: center;
+    border: none;
+}
+.td-selfmade:hover{
+    transform: scale(1.1,1.1);
+    cursor: pointer;
+}
+.tr-selfmade {
+    border-bottom: 1px solid #ccc;
+}
+
+.th-selfmade {
+    text-align: left;    
+}

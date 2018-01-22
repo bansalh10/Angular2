@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Employee portal</title>
+     
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="one.css" />
+</head>
+
+<body>
+
+    <div id="header">
+       
+        <div id="h1right">  
+            <h1>Employee Management</h1>
+         
+          <button type="button" id="btn1" class="btn btn-primary btn-lg">Create Employee Type</button>
+          <button type="button" id="btn2" class="btn btn-primary btn-lg">Delete Employee Type</button>
+          <button type="button" id="btn3" class="btn btn-primary btn-lg">Employee List</button>
+          <button type="button" id="btn4" class="btn btn-primary btn-lg">Add Employee</button>
+        </div>
+    </div>
+
+    <div id="content">
+
+     <div id="div1">
+        <h2> Create Employee Type</h2>
+
+         <form>
+  <div class="form-group">
+    <label for="name1">Employee Type</label>
+    <input type="input" class="form-control" id="name1" placeholder="Name" >
+  </div>
+ 
+  <button type="button" class="btn btn-primary btn-lg" id="btn5">Add</button>
+
+  <button type="button" class="btn btn-primary btn-lg" id="btn6">Cancel</button>
+</form>
+
+     </div>
+
+  <div id="div2">
+        <h2> Remove Employee type</h2>
+
+          <form>
+  <div class="form-group">
+   <div id="myDropdown" class="dropdown-content">
+       <select id="select1">
+    <!--<option value="Developer">Developer</option>
+    <option value="Tester">Tester</option>-->
+       </select>
+  </div>
+  </div>    
+ 
+  <button type="button" id="btn7" class="btn btn-primary btn-lg">Remove</button>
+
+  <button type="button" id="btn8" class="btn btn-primary btn-lg">Cancel</button>
+</form>
+
+     </div>  
+
+     <div id="div3">
+          <h2>Employee List</h2>
+<!--<nav class="navbar navbar-default">
+  <div class="container-fluid">-->
+    <!--<div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>-->
+    <br>
+<ul id="listemp">
+  <!--<li><a class="active" href="#dev" id="dev">Developer</a></li>
+  <li><a href="#man" id="man">Manager</a></li>
+  -->
+</ul>
+
+  <!--</div>
+</nav>-->
+<div id="eldiv">
+<ul id="list1" >
+</ul>
+
+</div>
+
+  <button type="button" id="eledit" class="btn btn-primary btn-lg" disabled="">Edit</button>
+  <button type="button" id="elrem" class="btn btn-primary btn-lg" disabled="">Remove</button>
+
+     </div> 
+
+      <div id="div4">
+        <h2> Add Employee </h2>
+         <form>
+  <div class="form-group">
+    <label for="name2">Name</label>
+    <input type="input" class="form-control" id="name2" placeholder="Name" >
+  </div>
+
+   <div class="form-group">
+    <label for="des">Designation</label>
+    <input type="input" class="form-control" id="des" placeholder="Designation" >
+  </div>
+ 
+    <select id="select2">
+    <!--<option value="Developer">Developer</option>
+    <option value="Tester">Tester</option>-->
+       </select>
+
+  <button type="button" id="addadd" class="btn btn-primary btn-lg">Add</button>
+
+  <button type="button" id="addundo" class="btn btn-primary btn-lg">Undo</button>
+</form>
+     </div>
+
+            </div>  
+
+               
+<script type="text/javascript" src="./create.js"> </script>
+</body>
+</html>
+

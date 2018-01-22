@@ -1,0 +1,18 @@
+
+<table class="table table-striped" *ngIf="flag">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+      <th>Description</th>
+        <th>Charges</th>
+          <th>Action</th>
+  </tr>
+  <tr *ngFor="let obj of data" id={{obj.id}} #tr>
+    <td >{{obj.name}}</td>
+    <td>{{obj.radio}}</td>
+    <td>{{obj.desc}}</td>
+    <td>{{obj.charges | currency:'INR':'true'}}</td>
+    <td><a (click)="delete(tr.id)"  >Delete | </a><a [routerLink]="['update',obj.id]"  >Update | </a><a [routerLink]="['details',obj.id]">Details</a></td>
+  </tr>
+
+</table>

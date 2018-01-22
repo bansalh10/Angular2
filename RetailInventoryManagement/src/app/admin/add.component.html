@@ -1,0 +1,44 @@
+<div class="container">
+    <form #productForm="ngForm" (ngSubmit)="addProduct(); productForm.reset()">
+        <div class="form-group">
+                <label>name</label><br>
+                <div class="col-sm-3">
+                     <input type="text" [(ngModel)]='name' class="form-control" name="formname" required #formname="ngModel"/><br><br>
+                     <span *ngIf="formname.touched && formname.errors && formname.errors.required">Required!!</span>
+            </div>
+        </div>
+
+         <div class="form-group">
+             <label>type</label><br>
+             <div class="col-sm-3">
+                 <input type="text" [(ngModel)]='type' class="form-control" name="formtype" required #formtype="ngModel" /><br><br>
+                 <span *ngIf="formtype.touched && formtype.errors && formtype.errors.required">Required!!</span>
+             </div>
+         </div>
+
+         <div class="form-group">
+             <label>cost</label><br>
+             <div class="col-sm-3">
+                <input type="number" [(ngModel)]='cost' class="form-control" name="formcost" required #formcost="ngModel"/><br><br>
+                  <span *ngIf="formcost.touched && formcost.errors && formcost.errors.required">Required!!</span>
+             </div>
+         </div>
+
+         <div class="form-group">
+                <label>discount</label><br>
+                 <div class="col-sm-3">
+                    <input type="text" [(ngModel)]='discount'class="form-control" name="formdiscount" required #formdiscount="ngModel" /><br><br>
+                    <span *ngIf="formdiscount.touched && formdiscount.errors && formdiscount.errors.required">Required!!</span>
+                 </div>
+         </div>
+
+          <div class="form-group">
+                <label>include in offers</label><br>
+                <div class="col-sm-3">
+                      <input type="checkbox" [(ngModel)]='offered' class="form-control"  [ngModelOptions]="{standalone: true}"/><br><br>
+                </div>
+          </div>
+
+        <button type="submit" class="btn btn-warning" [disabled]="!productForm.form.valid">submit </button><br>
+    </form>
+</div>

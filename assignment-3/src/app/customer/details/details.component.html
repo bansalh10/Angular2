@@ -1,0 +1,55 @@
+
+<div class="container"class="myclass">
+<form class="form-group" (ngSubmit)="close()" >
+  <div class="form-group">
+    <label for="txtFirstName">Name:</label>
+    {{name}}
+  </div>
+  <div class="form-group">
+    <label for="txtAge">Age:</label>
+{{age}}
+  </div>
+<div class="form-group">
+    <label for="txtdesc">Description:</label>
+    {{desc}}
+  </div>
+  <div class="form-group">
+    <label for="txtMobileNumber">MobileNumber:</label>
+    {{mobnum}}
+  </div>
+  <div class="form-group">
+    <label for="customerType">Type:</label>
+    <input type="radio" class="radio-inline" id="customerType" [(ngModel)]='radio'  name="optradio" value="Regular" #radio1 (click)="hideemployee(radio1.value)" disabled/>Regular
+    <input type="radio" id="customerType" class="radio-inline"  [(ngModel)]='radio' name="optradio" value="Corporate" #radio2 (click)="hideemployee(radio2.value)" disabled/>Corporate
+  </div>
+  <div class="form-group">
+    <label for="txtLoyal" >Loyal Program Subscribed:</label>
+    {{LoyalC}}
+  </div>
+ <div class="form-group">
+    <label for="txtPickup">PickUp Date:</label>
+    {{Date}}
+  </div>
+  <div class="form-group">
+    <label for="txtCharges">Charges:</label>
+    {{Charges}}
+    <label> per/km</label>
+  </div>
+  <div class="form-group" >
+    <label for="txtNum">Number of Employees:</label>
+   {{NumEmp}}
+  </div>
+  <div class="form-group">
+    <label for="txtDist">Distance Travelled:</label>
+    {{Dist}}
+  </div>
+  
+  <div class="form-input">
+      <button type="submit">
+        close
+      </button>
+    </div>
+</form>
+
+</div>
+<router-outlet></router-outlet>
